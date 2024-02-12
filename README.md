@@ -1,4 +1,3 @@
-La tondeuse
 La société MowItNow a décidé de développer une tondeuse à gazon automatique, 
 destinée aux surfaces rectangulaires. 
 La tondeuse peut être programmée pour parcourir l'intégralité de la surface. La 
@@ -18,6 +17,8 @@ On présuppose que la case directement au Nord de la position (x, y) a pour
 coordonnées (x, y+1). 
 Pour programmer la tondeuse, on lui fournit un fichier d'entrée construit comme 
 suit : 
+
+
 • La première ligne correspond aux coordonnées du coin supérieur droit de la 
 pelouse, celles du coin inférieur gauche sont supposées être (0,0)
 • La suite du fichier permet de piloter toutes les tondeuses qui ont été 
@@ -33,9 +34,12 @@ tondeuse ne bouge que lorsque la première a exécuté intégralement sa série
 d'instructions. 
 Lorsqu'une tondeuse achève une série d'instruction, elle communique sa position 
 et son orientation. 
+
+
 OBJECTIF
 Concevoir et écrire un programme en Java. Ce programme devra implémenter la 
 spécification ci-dessus et passer le test ci-après. 
+
 TEST
 Le fichier suivant est fourni en entrée : 5 5 1 2 N GAGAGAGAA 3 3 E AADAADADDA 
 On attend le résultat suivant (position finale des tondeuses) : 1 3 N 5 1 E NB: Les 
