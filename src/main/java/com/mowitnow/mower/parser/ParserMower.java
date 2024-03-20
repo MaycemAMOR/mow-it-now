@@ -17,20 +17,20 @@ public class ParserMower {
 				&& ParserData.parseListInstruction(instructions);
 	}
 
-	public String getPelouse() {
+	public String getLawn() {
 		return lawn;
 	}
 
-	public void setPelouse(String pelouse) {
-		this.lawn = pelouse;
+	public void setLawn(String lawn) {
+		this.lawn = lawn;
 	}
 
-	public String getTondeuse() {
+	public String getMower() {
 		return mower;
 	}
 
-	public void setTondeuse(String tondeuse) {
-		this.mower = tondeuse;
+	public void setMower(String mower) {
+		this.mower = mower;
 	}
 
 	public String getInstructions() {

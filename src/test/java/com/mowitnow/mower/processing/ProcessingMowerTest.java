@@ -7,21 +7,19 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.mowitnow.mower.entites.Coordinates;
-import com.mowitnow.mower.entites.Params;
-import com.mowitnow.mower.entites.Lawn;
-import com.mowitnow.mower.entites.PositionMower;
-import com.mowitnow.mower.entites.Params.InstructionMower;
-import com.mowitnow.mower.entites.Params.Orientation;
+import com.mowitnow.mower.model.Coordinates;
+import com.mowitnow.mower.model.Params;
+import com.mowitnow.mower.model.Lawn;
+import com.mowitnow.mower.model.PositionMower;
+import com.mowitnow.mower.model.Params.InstructionMower;
+import com.mowitnow.mower.model.Params.Orientation;
 import com.mowitnow.mower.main.ExceptionMower;
-import com.mowitnow.mower.processing.ProcessingInstruction;
-import com.mowitnow.mower.processing.ProcessingMower;
 
 public class ProcessingMowerTest {
 	Coordinates coordinatesMax = new Coordinates(5, 5);
 
 	@Test
-	public void execute_instruction_no_instruction() throws ExceptionMower {
+	public void execute_instruction_no_instruction() {
 		int x = 0;
 		int y = 0;
 		Coordinates coordinates = new Coordinates(x, y);
@@ -30,14 +28,14 @@ public class ProcessingMowerTest {
 		ProcessingMower processingM = new ProcessingMower();
 		processingM.setLawn(new Lawn(coordinatesMax));
 		processingM.setPositionMower(positionMower);
-		processingM.setListeInstruction(new ArrayList<Params.InstructionMower>());
+		processingM.setListInstruction(new ArrayList<>());
 		processingM.executeInstructions();
 		assertThat(processingM.toString()).isEqualTo("0 0 N");
 	}
 
 	@Test
-	public void execute_unitary_instruction() throws ExceptionMower {
-		List<InstructionMower> listInstruction = new ArrayList<Params.InstructionMower>();
+	public void execute_unitary_instruction() {
+		List<InstructionMower> listInstruction = new ArrayList<>();
 		listInstruction.add(InstructionMower.AVANCER);
 		int x = 1;
 		int y = 1;
@@ -46,14 +44,14 @@ public class ProcessingMowerTest {
 		ProcessingMower processingMower = new ProcessingMower();
 		processingMower.setLawn(new Lawn(coordinatesMax));
 		processingMower.setPositionMower(positionMower);
-		processingMower.setListeInstruction(listInstruction);
+		processingMower.setListInstruction(listInstruction);
 		processingMower.executeInstructions();
 		assertThat(processingMower.toString()).isEqualTo("1 2 N");
 	}
 
 	@Test
-	public void execute_multiple_instruction() throws ExceptionMower {
-		List<InstructionMower> listInstruction = new ArrayList<Params.InstructionMower>();
+	public void execute_multiple_instruction() {
+		List<InstructionMower> listInstruction = new ArrayList<>();
 		listInstruction.add(InstructionMower.GAUCHE);
 		listInstruction.add(InstructionMower.AVANCER);
 		listInstruction.add(InstructionMower.GAUCHE);
@@ -61,18 +59,18 @@ public class ProcessingMowerTest {
 		int x = 3;
 		int y = 2;
 		Coordinates coordinates = new Coordinates(x, y);
-		PositionMower positionTondeuse = new PositionMower(coordinates, Orientation.NORTH);
+		PositionMower positionMower = new PositionMower(coordinates, Orientation.NORTH);
 		ProcessingMower processingM = new ProcessingMower();
 		processingM.setLawn(new Lawn(coordinatesMax));
-		processingM.setPositionMower(positionTondeuse);
-		processingM.setListeInstruction(listInstruction);
+		processingM.setPositionMower(positionMower);
+		processingM.setListInstruction(listInstruction);
 		processingM.executeInstructions();
 		assertThat(processingM.toString()).isEqualTo("2 1 S");
 	}
 
 	@Test
-	public void execute_instruction_real_case_1() throws ExceptionMower {
-		List<InstructionMower> listInstruction = new ArrayList<Params.InstructionMower>();
+	public void execute_instruction_real_case_1() {
+		List<InstructionMower> listInstruction = new ArrayList<>();
 		listInstruction.add(InstructionMower.GAUCHE);
 		listInstruction.add(InstructionMower.AVANCER);
 		listInstruction.add(InstructionMower.GAUCHE);
@@ -89,14 +87,14 @@ public class ProcessingMowerTest {
 		ProcessingMower processingMower = new ProcessingMower();
 		processingMower.setLawn(new Lawn(coordinatesMax));
 		processingMower.setPositionMower(positionMower);
-		processingMower.setListeInstruction(listInstruction);
+		processingMower.setListInstruction(listInstruction);
 		processingMower.executeInstructions();
 		assertThat(processingMower.toString()).isEqualTo("1 3 N");
 	}
 
 	@Test
-	public void execute_instruction_real_case_2() throws ExceptionMower {
-		List<InstructionMower> listInstruction = new ArrayList<Params.InstructionMower>();
+	public void execute_instruction_real_case_2() {
+		List<InstructionMower> listInstruction = new ArrayList<>();
 		listInstruction.add(InstructionMower.AVANCER);
 		listInstruction.add(InstructionMower.AVANCER);
 		listInstruction.add(InstructionMower.DROITE);
@@ -114,7 +112,7 @@ public class ProcessingMowerTest {
 		ProcessingMower processingMower = new ProcessingMower();
 		processingMower.setLawn(new Lawn(coordinatesMax));
 		processingMower.setPositionMower(positionMower);
-		processingMower.setListeInstruction(listInstruction);
+		processingMower.setListInstruction(listInstruction);
 		processingMower.executeInstructions();
 		assertThat(processingMower.toString()).isEqualTo("5 1 E");
 	}
@@ -142,7 +140,7 @@ public class ProcessingMowerTest {
 	}
 
 	@Test
-	public void coordonnees_x_y_South_move_forward_instruction() throws ExceptionMower {
+	public void coordinates_x_y_South_move_forward_instruction() throws ExceptionMower {
 		int x = 5;
 		int y = 5;
 		Coordinates coordinates = new Coordinates(x, y);
@@ -153,7 +151,7 @@ public class ProcessingMowerTest {
 	}
 
 	@Test
-	public void coordonnees_x_y_West_move_forward_instruction() throws ExceptionMower {
+	public void coordinates_x_y_West_move_forward_instruction() throws ExceptionMower {
 		int x = 5;
 		int y = 5;
 		Coordinates coordinates = new Coordinates(x, y);

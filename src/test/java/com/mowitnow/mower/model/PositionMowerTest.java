@@ -1,12 +1,9 @@
-package com.mowitnow.mower.entites;
+package com.mowitnow.mower.model;
 
-import static org.fest.assertions.Assertions.assertThat;
-
+import com.mowitnow.mower.model.Params.Orientation;
 import org.junit.Test;
 
-import com.mowitnow.mower.entites.Coordinates;
-import com.mowitnow.mower.entites.PositionMower;
-import com.mowitnow.mower.entites.Params.Orientation;
+import static org.fest.assertions.Assertions.assertThat;
 
 public class PositionMowerTest {
 

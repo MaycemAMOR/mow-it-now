@@ -4,16 +4,14 @@ import static org.fest.assertions.Assertions.assertThat;
 
 import org.junit.Test;
 
-import com.mowitnow.mower.parser.ParserMower;
-
 public class ParserMowerTest {
 
 	@Test
 	public void parse_mower() {
 		ParserMower parserMower = new ParserMower();
 		parserMower.setInstructions("DGDGA");
-		parserMower.setPelouse("50 5");
-		parserMower.setTondeuse("1 2 N");
+		parserMower.setLawn("50 5");
+		parserMower.setMower("1 2 N");
 		assertThat(parserMower.executeParse()).isTrue();
 	}
 
@@ -21,8 +19,8 @@ public class ParserMowerTest {
 	public void parse_mower_lawn_incorrect() {
 		ParserMower parserMower = new ParserMower();
 		parserMower.setInstructions("DGDGA");
-		parserMower.setPelouse("0 -1");
-		parserMower.setTondeuse("1 2 N");
+		parserMower.setLawn("0 -1");
+		parserMower.setMower("1 2 N");
 		assertThat(parserMower.executeParse()).isFalse();
 	}
 

@@ -1,14 +1,12 @@
 package com.mowitnow.mower.processing;
 
-import static org.fest.assertions.Assertions.assertThat;
-
+import com.mowitnow.mower.model.Coordinates;
+import com.mowitnow.mower.model.Lawn;
+import com.mowitnow.mower.model.Params.InstructionMower;
+import com.mowitnow.mower.model.Params.Orientation;
 import org.junit.Test;
 
-import com.mowitnow.mower.entites.Coordinates;
-import com.mowitnow.mower.entites.Lawn;
-import com.mowitnow.mower.entites.Params.InstructionMower;
-import com.mowitnow.mower.entites.Params.Orientation;
-import com.mowitnow.mower.processing.FormatLine;
+import static org.fest.assertions.Assertions.assertThat;
 
 public class FormatLineTest {
 

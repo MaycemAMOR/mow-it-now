@@ -1,32 +1,30 @@
 package com.mowitnow.mower.processing;
 
-import static org.fest.assertions.Assertions.assertThat;
-
+import com.mowitnow.mower.model.Coordinates;
+import com.mowitnow.mower.model.Params.InstructionMower;
+import com.mowitnow.mower.model.Params.Orientation;
+import com.mowitnow.mower.model.PositionMower;
+import com.mowitnow.mower.main.ExceptionMower;
 import org.junit.Test;
 
-import com.mowitnow.mower.entites.Coordinates;
-import com.mowitnow.mower.entites.PositionMower;
-import com.mowitnow.mower.entites.Params.InstructionMower;
-import com.mowitnow.mower.entites.Params.Orientation;
-import com.mowitnow.mower.main.ExceptionMower;
-import com.mowitnow.mower.processing.ProcessingInstruction;
+import static org.fest.assertions.Assertions.assertThat;
 
 public class ProcessingInstructionTest {
 
 	@Test
 	public void coordinates_x_y_south_instruction_Turn_Right() throws ExceptionMower {
-		Coordinates coordonnesMax = new Coordinates(5, 5);
+		Coordinates coordinatesMax = new Coordinates(5, 5);
 		int x = 2;
 		int y = 3;
-		Coordinates coordonnees = new Coordinates(x, y);
-		PositionMower positionTondeuse = new PositionMower(coordonnees, Orientation.SOUTH);
-		ProcessingInstruction.executeInstruction(positionTondeuse, InstructionMower.DROITE, coordonnesMax);
-		assertThat(positionTondeuse.getCoordinatesMower()).isEqualTo(new Coordinates(x, y));
-		assertThat(positionTondeuse.getOrientationMower()).isEqualTo(Orientation.WEST);
+		Coordinates coordinates = new Coordinates(x, y);
+		PositionMower positionMower = new PositionMower(coordinates, Orientation.SOUTH);
+		ProcessingInstruction.executeInstruction(positionMower, InstructionMower.DROITE, coordinatesMax);
+		assertThat(positionMower.getCoordinatesMower()).isEqualTo(new Coordinates(x, y));
+		assertThat(positionMower.getOrientationMower()).isEqualTo(Orientation.WEST);
 	}
 
 	@Test
-	public void rotate_right() throws ExceptionMower {
+	public void rotate_right() {
 
 		Orientation nextOrientation = ProcessingInstruction.rotateRight(Orientation.EAST);
 		assertThat(nextOrientation).isEqualTo(Orientation.SOUTH);
@@ -42,7 +40,7 @@ public class ProcessingInstructionTest {
 	}
 
 	@Test
-	public void rotate_left() throws ExceptionMower {
+	public void rotate_left() {
 		Orientation nextOrientation = ProcessingInstruction.rotateLeft(Orientation.EAST);
 		assertThat(nextOrientation).isEqualTo(Orientation.NORTH);
 

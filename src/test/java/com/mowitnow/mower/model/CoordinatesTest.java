@@ -1,9 +1,8 @@
-package com.mowitnow.mower.entites;
+package com.mowitnow.mower.model;
+import static com.mowitnow.mower.processing.ProcessingInstruction.isHorsCoordinatesMax;
 import static org.fest.assertions.Assertions.assertThat;
 
 import org.junit.Test;
-
-import com.mowitnow.mower.entites.Coordinates;
 
 public class CoordinatesTest {
 
@@ -21,7 +20,7 @@ public class CoordinatesTest {
 		Coordinates coordinatesLawn = new Coordinates(5,5);
 		Coordinates c0 = new Coordinates(-1,1);
 		Coordinates c1 = new Coordinates(1,1);
-		assertThat(coordinatesLawn.isHorsCoordonnesMax(c0)).isFalse();
-		assertThat(coordinatesLawn.isHorsCoordonnesMax(c1)).isTrue();
+		assertThat(isHorsCoordinatesMax(coordinatesLawn, c0)).isFalse();
+		assertThat(isHorsCoordinatesMax(coordinatesLawn, c1)).isTrue();
 	}
 }

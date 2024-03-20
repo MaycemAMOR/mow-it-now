@@ -1,11 +1,8 @@
-package com.mowitnow.mower.entites;
-
-import static org.fest.assertions.Assertions.assertThat;
+package com.mowitnow.mower.model;
 
 import org.junit.Test;
 
-import com.mowitnow.mower.entites.Coordinates;
-import com.mowitnow.mower.entites.Lawn;
+import static org.fest.assertions.Assertions.assertThat;
 
 public class LawnTest {
 

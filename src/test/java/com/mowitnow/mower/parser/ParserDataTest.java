@@ -17,7 +17,7 @@ public class ParserDataTest {
 	}
 	
 	@Test
-	public void parse_liste_instruction_data(){
+	public void parse_list_instruction_data(){
 		assertThat(ParserData.parseListInstruction("")).isFalse();
 		assertThat(ParserData.parseListInstruction(" ")).isFalse();
 		assertThat(ParserData.parseListInstruction("D G")).isFalse();

@@ -1,19 +1,18 @@
 package com.mowitnow.mower.processing;
 
+import com.mowitnow.mower.model.Lawn;
+import com.mowitnow.mower.model.Params;
+import com.mowitnow.mower.model.PositionMower;
+import com.mowitnow.mower.main.ExceptionMower;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.mowitnow.mower.entites.Params;
-import com.mowitnow.mower.entites.Lawn;
-import com.mowitnow.mower.entites.PositionMower;
-import com.mowitnow.mower.entites.Params.InstructionMower;
-import com.mowitnow.mower.main.ExceptionMower;
 
 public class ProcessingMower {
 
 	private Lawn lawn;
 	private PositionMower positionMower;
-	private List<Params.InstructionMower> listeInstruction;
+	private List<Params.InstructionMower> instructionList;
 
 	public void setLawn(Lawn lawn) {
 		this.lawn = lawn;
@@ -23,21 +22,25 @@ public class ProcessingMower {
 		this.positionMower = positionMower;
 	}
 
-	public void setListeInstruction(List<Params.InstructionMower> pListeInstruction) {
-		this.listeInstruction = pListeInstruction;
-		if (pListeInstruction == null) {
-			listeInstruction = new ArrayList<InstructionMower>();
+	public void setListInstruction(List<Params.InstructionMower> instructionList) {
+		this.instructionList = instructionList;
+		if (instructionList == null) {
+			this.instructionList = new ArrayList<>();
 		}
 	}
 
-	public void executeInstructions() throws ExceptionMower {
-		for (InstructionMower instruction : listeInstruction) {
-			ProcessingInstruction.executeInstruction(positionMower, instruction, this.lawn.getPositionMax());
-		}
+	public void executeInstructions(){
+		instructionList.forEach(instruction -> {
+            try {
+                ProcessingInstruction.executeInstruction(positionMower, instruction, this.lawn.positionMax());
+            } catch (ExceptionMower e) {
+                throw new RuntimeException(e);
+            }
+        });
 	}
 
 	public String toString() {
-		return positionMower.getCoordinatesMower().getX() + " " + positionMower.getCoordinatesMower().getY()
+		return positionMower.getCoordinatesMower().x() + " " + positionMower.getCoordinatesMower().y()
 				+ " " + positionMower.getOrientationMower().getOrientationCode();
 	}
 }

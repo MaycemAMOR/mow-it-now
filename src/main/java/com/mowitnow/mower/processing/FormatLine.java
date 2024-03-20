@@ -3,11 +3,11 @@ package com.mowitnow.mower.processing;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mowitnow.mower.entites.Coordinates;
-import com.mowitnow.mower.entites.Lawn;
-import com.mowitnow.mower.entites.PositionMower;
-import com.mowitnow.mower.entites.Params.InstructionMower;
-import com.mowitnow.mower.entites.Params.Orientation;
+import com.mowitnow.mower.model.Coordinates;
+import com.mowitnow.mower.model.Lawn;
+import com.mowitnow.mower.model.PositionMower;
+import com.mowitnow.mower.model.Params.InstructionMower;
+import com.mowitnow.mower.model.Params.Orientation;
 
 public class FormatLine {
 
@@ -18,19 +18,19 @@ public class FormatLine {
 	}
 
 	public static PositionMower formatLineMower(String lineMower) {
-		String[] elts = lineMower.split(SPACE_STRING);
-		Coordinates pCoordinatesMower = new Coordinates(Integer.valueOf(elts[0]), Integer.valueOf(elts[1]));
-		Orientation orientationMower = getOrientation(elts[2].charAt(0));
-		return new PositionMower(pCoordinatesMower, orientationMower);
+		String[] strings = lineMower.split(SPACE_STRING);
+		Coordinates coordinatesMower = new Coordinates(Integer.parseInt(strings[0]), Integer.parseInt(strings[1]));
+		Orientation orientationMower = getOrientation(strings[2].charAt(0));
+		return new PositionMower(coordinatesMower, orientationMower);
 	}
 
 	public static Lawn formatLineLawn(String lineLawn) {
-		String[] elts = lineLawn.split(SPACE_STRING);
-		return new Lawn(new Coordinates(Integer.valueOf(elts[0]), Integer.valueOf(elts[1])));
+		String[] strings = lineLawn.split(SPACE_STRING);
+		return new Lawn(new Coordinates(Integer.parseInt(strings[0]), Integer.parseInt(strings[1])));
 	}
 
 	public static List<InstructionMower> formatLineInstruction(String lineInstruction) {
-		List<InstructionMower> listInstruction = new ArrayList<InstructionMower>();
+		List<InstructionMower> listInstruction = new ArrayList<>();
 		for (char instruction : lineInstruction.toCharArray()) {
 			listInstruction.add(getInstruction(instruction));
 		}
