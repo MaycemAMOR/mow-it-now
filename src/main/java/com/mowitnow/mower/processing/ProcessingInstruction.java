@@ -1,11 +1,11 @@
 package com.mowitnow.mower.processing;
 
+import com.mowitnow.mower.main.ExceptionMower;
 import com.mowitnow.mower.model.Coordinates;
 import com.mowitnow.mower.model.Params;
 import com.mowitnow.mower.model.Params.InstructionMower;
 import com.mowitnow.mower.model.Params.Orientation;
 import com.mowitnow.mower.model.PositionMower;
-import com.mowitnow.mower.main.ExceptionMower;
 
 public class ProcessingInstruction {
 
@@ -43,11 +43,11 @@ public class ProcessingInstruction {
         };
         nextCoordinates = new Coordinates(x, y);
 
-        if (isHorsCoordinatesMax(maxCoordinates, nextCoordinates)) {
+        if (isHorsCoordinatesMax(maxCoordinates, nextCoordinates))
             return nextCoordinates;
-        } else {
+        else
             return positionMower.getCoordinatesMower();
-        }
+
     }
 
     public static Orientation rotateRight(Orientation orientation) {

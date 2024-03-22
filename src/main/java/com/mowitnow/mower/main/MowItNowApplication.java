@@ -77,7 +77,7 @@ public class MowItNowApplication {
             processing.setListInstruction(FormatLine.formatLineInstruction(parser.getInstructions()));
             System.out.println("I will move like this : " + parser.getInstructions());
             processing.executeInstructions();
-            System.out.println("After executing the instructions above, I am at the position : " + processing);
+            System.out.println("After executing the instructions above, I am at the position : " + processing + "\n");
             return processing.toString();
         }
     }
