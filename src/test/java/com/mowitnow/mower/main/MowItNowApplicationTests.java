@@ -2,7 +2,6 @@ package com.mowitnow.mower.main;
 
 
 import com.mowitnow.mower.model.Params;
-import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
@@ -40,11 +39,6 @@ public class MowItNowApplicationTests {
     @BeforeClass
     public static void beforeClass() {
         listFiles("BeforeClass");
-    }
-
-    @AfterClass
-    public static void afterClass() {
-        listFiles("AfterClass");
     }
 
     @Test(expected = IllegalArgumentException.class)
